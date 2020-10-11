@@ -7,7 +7,7 @@ static const unsigned int gappih    = 6;       /* horiz inner gap between window
 static const unsigned int gappiv    = 6;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 7;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 7;       /* vert outer gap between windows and screen edge */
-static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
+static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -16,8 +16,8 @@ static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#fbf1c7";
-static const char col_cyan[]        = "#427b58";
+static const char col_gray4[]       = "#f9f5d7";
+static const char col_cyan[]        = "#665c54";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -26,7 +26,8 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"xautolock", "-time", "1", "-locker", "slock", NULL,
+	// "xautolock", "-time", "1", "-locker", "slock", NULL,
+	"locker.sh", NULL,
 	NULL /* terminate */
 };
 
@@ -42,6 +43,7 @@ static const Rule rules[] = {
 	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ NULL,      "mpv",    NULL,           0,         1,          0,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
